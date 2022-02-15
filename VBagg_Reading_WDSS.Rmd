@@ -282,5 +282,18 @@ class: center, middle
 
 # Variational Inference Detour
 
-[Deep Bayes 2018](https://drive.google.com/drive/folders/1Em534k1ot0ZB5Bsp1ZcXZmthK8_Irbvw)
+[Kropotov at Deep Bayes 2018](https://drive.google.com/drive/folders/1Em534k1ot0ZB5Bsp1ZcXZmthK8_Irbvw)
 
+---
+class: center, middle
+
+# Back to the Paper
+
+[Law et al, 2018](https://arxiv.org/pdf/1805.08463.pdf)
+
+---
+class: center, middle
+
+# As for the code part...
+
+[They have a repo](https://github.com/hcllaw/VBAgg)

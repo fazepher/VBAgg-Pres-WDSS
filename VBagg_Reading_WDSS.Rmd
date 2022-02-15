@@ -1,0 +1,270 @@
+---
+title: "WDSS Papers and Code"
+subtitle: "Reading of \n Variational Learning on Aggregate Outputs with Gaussian Process \n (Law et al 2018)"
+author: 
+  - "Fernando A. Zepeda Herrera"
+date: '15 February 2022'
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_mono_light(
+  base_color = "#23395b", 
+  white_color = "white"
+)
+```
+
+```{r xaringanExtra, echo=FALSE}
+library(xaringanExtra)
+use_fit_screen()
+use_panelset()
+use_logo(image_url = "img/logo_banner.jpeg", width = "180px", height = "120px")
+```
+
+.center[
+
+### Plan for Today
+
+]
+
+.pull-left[
+
+<br>
+
+1. Aggregated Outputs
+  
+1. Gaussian Processes
+
+1. Variational Inference
+
+1. Examples and Discussion
+
+<br>
+
+```{r}
+knitr::include_graphics("img/Paper_Fig_3.png")
+```
+
+]
+
+.pull-right[
+
+```{r}
+knitr::include_graphics("img/VBAgg_cover.png")
+```
+
+]
+
+---
+class: center, middle
+
+# Aggregated Outputs
+
+---
+
+## Aggregated Outputs: Ex. Desease Prevalence
+
+.pull-left[
+```{r}
+knitr::include_graphics("img/aggr_ex_01.png")
+```
+]
+
+.pull-right[
+```{r}
+knitr::include_graphics("img/aggr_ex_02.png")
+```
+]
+
+---
+
+## Aggregated Outputs: Ex. Desease Prevalence
+
+.pull-left[
+```{r, out.width="80%"}
+knitr::include_graphics("img/Paper_Fig_3_b.png")
+```
+]
+
+.pull-right[
+```{r, out.width="60%"}
+knitr::include_graphics("img/Paper_Fig_10.png")
+```
+
+```{r, out.width="60%"}
+knitr::include_graphics("img/Paper_Fig_11.png")
+```
+]
+
+---
+
+## Aggregated Outputs
+
+.center[
+```{r}
+knitr::include_graphics("img/aggr_problem.png")
+```
+]
+
+---
+
+## Aggregated Outputs
+
+.center[
+```{r, out.width="60%"}
+knitr::include_graphics("img/aggr_problem_01.png")
+```
+]
+
+---
+
+## Aggregated Outputs
+
+.center[
+```{r, out.width="60%"}
+knitr::include_graphics("img/aggr_problem_02.png")
+```
+]
+
+---
+
+## Aggregated Outputs
+
+.center[
+```{r, out.width="60%"}
+knitr::include_graphics("img/aggr_problem_03.png")
+```
+]
+
+---
+
+## Aggregated Outputs: Bag Observation Model
+
+.panelset.sideways[
+.panel[.panel-name[Data]
+
+We have the following data
+
+1. A **bag** of inputs $x^a = \lbrace x_1^a, x_2^a, \dots, x_{N_a}^a\rbrace$ coming from $N_a$ individuals
+
+1. A total of $n$ such bags
+
+1. For each bag we have its **aggregated output** $y^a$
+
+Hence, our dataset is:
+
+$$(\lbrace x_i^1 \rbrace_{i=1}^{N_1}, y^1)\;(\lbrace x_i^2 \rbrace_{i=1}^{N_2}, y^2)\;\cdots\;(\lbrace x_i^1 \rbrace_{i=1}^{N_n}, y^n)\;$$
+
+]
+
+.panel[.panel-name[Model]
+The aggregated output is related to the bag via de following **Bag Observation Model**
+
+$$y^a|x^a \sim p(y|\eta^a)$$ 
+$$\eta^a := \sum_{i=1}^{N_a} w_i^a\;\eta(x_i^a)$$
+
+where the $w_i$ represent (possible) fixed weights. The inference goal is on the individual *mean parameters* $\eta(x_i^a)$.  
+
+]
+
+.panel[.panel-name[Poisson Example]
+
+- Suppose we have aggregated counts, 
+
+- But we know the population sizes at the individual level $p_i^a$ (as well as other covariates $x$). Then, the bag population can be $p^a=\sum p_i^a$.
+
+-We are interested in the individual rates $\lambda_i^a$ of the following Poisson model:
+
+$$y^a|x^a \sim \text{Poisson}(p^a\lambda^a)$$ 
+$$\lambda^a := \sum_{i=1}^{N_a} \dfrac{p_i^a}{p^a}\;\lambda(x_i^a)$$
+
+]
+
+.panel[.panel-name[But...]
+
+#### Is it that simple?
+
+- Non linear form of $\eta(x_i^a)$
+
+- Usually *a lot* of individuals per bag 
+
+#### What to do?
+
+]
+
+]
+
+
+---
+class: inverse, center, middle
+
+# VBAgg 
+
+## Variational Bag Aggregated Model with Gaussian Processes
+
+---
+
+## VBAgg
+
+.panelset.sideways[
+
+.panel[.panel-name[Poisson Example]
+
+- Suppose we have aggregated counts, 
+
+- But we know the population sizes at the individual level $p_i^a$ (as well as other covariates $x$). Then, the bag population can be $p^a=\sum p_i^a$.
+
+-We are interested in the individual rates $\lambda_i^a$ of the following Poisson model:
+
+$$y^a|x^a \sim \text{Poisson}(p^a\lambda^a)$$ 
+$$\lambda^a := \sum_{i=1}^{N_a} \dfrac{p_i^a}{p^a}\;\lambda(x_i^a)$$
+
+]
+
+.panel[.panel-name[GP]
+
+Model the complicated and unobserved relationship as a **Gaussian Process**
+
+$$\lambda(x_i^a) = \Psi(f(x_i^a)) \qquad f\sim GP(\mu,k)$$
+
+where $\Psi: \mathbb{R} \to \mathbb{R}^+$ is a suitable transformation like $\Psi(f) = \exp(f)$ or   $\Psi(f) = f^2$.
+
+]
+
+.panel[.panel-name[Inducing Points]
+
+Since GP are complicated and we have many individuals, they propose also to consider some **inducing points** $\lbrace u_l\rbrace_{l=1}^m$, which are the evaluations of the process at *landmark points* $\lbrace z_l\rbrace_{l=1}^m$, so that
+
+$$u_l := f(z_l),$$
+
+so that
+
+$$u \sim N_m(\mu_Z, K_{Z,Z})$$
+
+]
+
+.panel[.panel-name[Likelihood]
+
+We are then interested in the following (log) likelihood:
+
+$$\log p(Y) = \log \int\int p(Y, f, u) dfdu = \log \int\int \prod_{a=1}^n p(y^a|\eta^a)p(f | u) p(u)  df du$$
+
+which is quite complicated, so they propose using **Variational Inference** to approximate it.
+
+]
+
+]

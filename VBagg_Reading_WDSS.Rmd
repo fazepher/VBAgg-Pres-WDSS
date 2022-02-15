@@ -268,3 +268,19 @@ which is quite complicated, so they propose using **Variational Inference** to a
 ]
 
 ]
+
+---
+class: center, middle
+
+# Gaussian Processes Detour
+
+[Michael Betancourt's Case Study](https://betanalpha.github.io/assets/case_studies/gaussian_processes.html)
+
+
+---
+class: center, middle
+
+# Variational Inference Detour
+
+[Deep Bayes 2018](https://drive.google.com/drive/folders/1Em534k1ot0ZB5Bsp1ZcXZmthK8_Irbvw)
+

@@ -1,6 +1,6 @@
 ---
 title: "WDSS Papers and Code"
-subtitle: "Reading of \n Variational Learning on Aggregate Outputs with Gaussian Process \n (Law, Sejdinovic et al, 2018)"
+subtitle: "Reading of \n Variational Learning on Aggregate Outputs with Gaussian Process  (Law, Sejdinovic et al, 2018)"
 author: 
   - "Fernando A. Zepeda Herrera"
 date: '15 February 2022'

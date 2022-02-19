@@ -319,7 +319,7 @@ class: center, middle
 
 # References
 
-#### Main Paper
+#### Main Paper and Repository
 ```{r, echo=FALSE, results="asis"}
 PrintBibliography(References,start = 1, end = 2)
 ```

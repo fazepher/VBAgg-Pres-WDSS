@@ -16,7 +16,7 @@
 class: center, middle, inverse, title-slide
 
 # WDSS Papers and Code
-## Reading of Variational Learning on Aggregate Outputs with Gaussian Process (Law et al 2018)
+## Reading of Variational Learning on Aggregate Outputs with Gaussian Process (Law, Sejdinovic et al, 2018)
 ### Fernando A. Zepeda Herrera
 ### 15 February 2022
 
@@ -61,6 +61,8 @@ top:1em;right:1em;
 })()</script>
 </div>
 
+
+
 .center[
 
 ### Plan for Today
@@ -81,8 +83,10 @@ top:1em;right:1em;
 
 &lt;br&gt;
 
-&lt;img src="img/Paper_Fig_3.png" width="2309" /&gt;
-
+&lt;div class="figure"&gt;
+&lt;img src="img/Paper_Fig_3.png" alt="Figure 3 from the paper" width="2309" /&gt;
+&lt;p class="caption"&gt;Figure 3 from the paper&lt;/p&gt;
+&lt;/div&gt;
 ]
 
 .pull-right[
@@ -95,6 +99,8 @@ top:1em;right:1em;
 class: center, middle
 
 # Aggregated Outputs
+
+Main problem addressed by Law, Sejdinovic, Cameron, Lucas, Flaxman, Battle, and Fukumizu (2018)
 
 ---
 
@@ -113,7 +119,12 @@ class: center, middle
 ## Aggregated Outputs: Ex. Desease Prevalence
 
 .pull-left[
-&lt;img src="img/Paper_Fig_3_b.png" width="80%" /&gt;
+&lt;div class="figure"&gt;
+&lt;img src="img/Paper_Fig_3_b.png" alt="Figure 3(b)" width="80%" /&gt;
+&lt;p class="caption"&gt;Figure 3(b)&lt;/p&gt;
+&lt;/div&gt;
+
+Source: All three images from Law Sejdinovic et al. (2018).
 ]
 
 .pull-right[
@@ -220,6 +231,8 @@ class: inverse, center, middle
 
 ## Variational Bag Aggregated Model with Gaussian Processes
 
+Law Sejdinovic et al. (2018)
+
 ---
 
 ## VBAgg
@@ -278,7 +291,7 @@ class: center, middle
 
 # Gaussian Processes Detour
 
-[Michael Betancourt's Case Study](https://betanalpha.github.io/assets/case_studies/gaussian_processes.html)
+[Betancourt (2020)](https://betanalpha.github.io/assets/case_studies/gaussian_processes.html)
 
 
 ---
@@ -286,8 +299,43 @@ class: center, middle
 
 # Variational Inference Detour
 
-[Deep Bayes 2018](https://drive.google.com/drive/folders/1Em534k1ot0ZB5Bsp1ZcXZmthK8_Irbvw)
+[Vetrov (2019)](https://drive.google.com/drive/folders/1Em534k1ot0ZB5Bsp1ZcXZmthK8_Irbvw)
 
+---
+class: center, middle
+
+# Back to the Paper
+
+[Law Sejdinovic et al. (2018)](https://arxiv.org/pdf/1805.08463.pdf)
+
+---
+class: center, middle
+
+# As for the code part...
+
+[Law (2018)](https://github.com/hcllaw/VBAgg)
+
+---
+
+# References
+
+#### Main Paper
+Law, H. C., D. Sejdinovic, E. Cameron, et al. (2018). "Variational
+Learning on Aggregate Outputs with Gaussian Processes". In: _Advances
+in Neural Information Processing Systems_. Ed. by S. Bengio, H.
+Wallach, H. Larochelle, K. Grauman, N. Cesa-Bianchi and R. Garnett.
+Vol. 31. Curran Associates, Inc. URL:
+[https://proceedings.neurips.cc/paper/2018/hash/24b43fb034a10d78bec71274033b4096-Abstract.html](https://proceedings.neurips.cc/paper/2018/hash/24b43fb034a10d78bec71274033b4096-Abstract.html).
+
+Law, H. C. (2018). _VBAgg. GitHub repository_. URL:
+[https://github.com/hcllaw/VBAgg](https://github.com/hcllaw/VBAgg).
+
+#### Detours
+Betancourt, M. (2020). _Robust Gaussian Process Modeling_. URL:
+[https://betanalpha.github.io/assets/case_studies/gaussian_processes.html](https://betanalpha.github.io/assets/case_studies/gaussian_processes.html).
+
+Vetrov, D. (2019). _Variational Inference_. URL:
+[https://github.com/bayesgroup/deepbayes-2019/tree/master/lectures/day1](https://github.com/bayesgroup/deepbayes-2019/tree/master/lectures/day1).
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

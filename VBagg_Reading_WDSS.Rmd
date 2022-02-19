@@ -299,14 +299,14 @@ class: center, middle
 
 # Variational Inference Detour
 
-[`r Citet(References, "VariationalDeepBayes", .opts = list(max.names = 2))`](https://drive.google.com/drive/folders/1Em534k1ot0ZB5Bsp1ZcXZmthK8_Irbvw)
+[`r Citet(References, "VariationalDeepBayes", .opts = list(max.names = 2))`](https://github.com/bayesgroup/deepbayes-2019/tree/master/lectures/day1)
 
 ---
 class: center, middle
 
 # Back to the Paper
 
-[`r Citet(References, "VBAgg", .opts = list(max.names = 2))`](https://arxiv.org/pdf/1805.08463.pdf)
+[`r Citet(References, "VBAgg", .opts = list(max.names = 2))`](https://proceedings.neurips.cc/paper/2018/hash/24b43fb034a10d78bec71274033b4096-Abstract.html)
 
 ---
 class: center, middle
